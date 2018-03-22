@@ -1,20 +1,100 @@
 var friendArray = [
     {
-        "name":"Ahmed",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "name":"Pee Wee Herman",
+        "photo":"https://pbs.twimg.com/profile_images/362060137/Pee-wee_Twitter_Profile.png",
+        "scores":[
+            "3",
+            "4",
+            "1",
+            "5",
+            "2",
+            "1",
+            "2",
+            "4",
+            "5",
+            "5"
+          ]
+    },
+    {
+        "name":"Rambo",
+        "photo":"https://vignette.wikia.nocookie.net/rambo/images/e/ed/Rambo-630.jpg/revision/latest?cb=20140928093729",
+        "scores":[
+            "4",
+            "2",
+            "2",
+            "3",
+            "4",
+            "4",
+            "4",
+            "2",
+            "1",
+            "3"
+          ]
+    },
+    {
+        "name":"leeloo",
+        "photo":"https://typeset-beta.imgix.net/rehost/2016/9/13/df46f351-b39c-49f4-af96-106b791f6de7.jpg?w=740&h=444&fit=crop&crop=faces&auto=format&q=70",
+        "scores":[
+            "5",
+            "4",
+            "4",
+            "3",
+            "3",
+            "2",
+            "3",
+            "5",
+            "4",
+            "4"
+          ]
+    },
+    {
+        "name":"Ellen Ripley",
+        "photo":"https://media.giphy.com/media/xUPGctCpUYlntZWkgM/giphy.gif",
+        "scores":[
+            "3",
+            "2",
+            "5",
+            "4",
+            "3",
+            "4",
+            "2",
+            "3",
+            "1",
+            "2"
+          ]
+    },
+    {
+        "name":"John Luther",
+        "photo":"https://vignette.wikia.nocookie.net/p__/images/f/f1/John_Luther.jpg/revision/latest?cb=20151224181122&path-prefix=protagonist",
+        "scores":[
+            "2",
+            "1",
+            "4",
+            "2",
+            "5",
+            "4",
+            "4",
+            "2",
+            "2",
+            "3"
+          ]
+    },
+    {
+        "name":"Han Solo",
+        "photo":"https://i.kinja-img.com/gawker-media/image/upload/s--mEZ8_vPF--/c_scale,fl_progressive,q_80,w_800/mp1xpfx9enplnazcld8o.png",
         "scores":[
             "5",
             "1",
             "4",
-            "4",
-            "5",
             "1",
-            "2",
+            "5",
             "5",
             "4",
-            "1"
+            "5",
+            "4",
+            "5"
           ]
-      }
+    }
 ];
 
 module.exports = friendArray;
