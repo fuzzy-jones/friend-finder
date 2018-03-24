@@ -8,14 +8,42 @@ module.exports = function (app) {
       });
 
     app.post("/api/friends", function(req, res) {
-        // req.body hosts is equal to the JSON post sent from the user
+        // store the request data in a variable
+        var newfriend = req.body;
+
+        // will eventually store the name and photo of the best match determined below in a variable to be returned in the res.json
+        var friendMatch = {
+            name: newfriend.name,
+            photo: newfriend.photo,
+        };
+
+        // need a difference variable to compare the scores of the new friend and existing friend
+        var difference = 0;
+
+        // loop through the existing friends array from the friendsData.js file and any new friend pushed into that array
+        for (i = 0; i < friends.length; i++) {
+            // log name of friends in array for testing
+            console.log(friends[i].name);
+
+            // now loop through the scores of each in the array to compare to the new user scores to find difference
+            for (j = 0; j < friends[i].scores.length; j++) {
+                // now storing the difference of each score of the new friend to that of each in the array
+                difference = Math.abs(parseInt(newfriend.scores[j]) - parseInt(friends[i].scores[j]));
+                // console logging the difference for testing
+                console.log(difference);
+
+                // need to add the difference number for each friend in array
+                
+                
+            }
+        }
         
-        // Using a RegEx Pattern to remove spaces from newFriend
-        
-        console.log(friends);
-        
-            friends.push(req.body);
-            res.json(true);
+
+        // makes int a positive number
+        // Math.abs();
+
+        friends.push(newfriend);
+        res.json(newfriend);
     });
 
 };
