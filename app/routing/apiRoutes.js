@@ -32,7 +32,9 @@ module.exports = function (app) {
                 // console logging the difference for testing
                 console.log(difference);
 
-                // need to add the difference number for each friend in array
+                // need to add the difference numbers for each friend in array to find a total difference for each
+                // need to find the lowest difference number to get a match
+                // need to store the name and photo of match in friendMatch variable and put in res.json below
                 
                 
             }
@@ -43,6 +45,7 @@ module.exports = function (app) {
         // Math.abs();
 
         friends.push(newfriend);
+        // need to change to friendMatch once found
         res.json(newfriend);
     });
 

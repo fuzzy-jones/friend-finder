@@ -155,20 +155,20 @@
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-    
         <!-- Modal content-->
         <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Best Match</h4>
-        </div>
-        <div class="modal-body">
-            <!-- matching friend name -->
-            <!-- matching friend image -->
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2>Best Match</h2>
+            </div>
+            <div class="modal-body">
+                <!-- matching friend name -->
+                <h3 id="matchName"></h3>
+                <!-- matching friend image -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     
     </div>
@@ -200,14 +200,16 @@
 
         // post/add new friend info to array
         $.post("/api/friends", newFriend, function(data) {
-                alert("Adding Friend...");
+                // alert("Adding Friend...");
 
+                $("#matchName").text(data.name);
                 // display the modal after match is found
-                // $("#myModal").modal("toggle");
+                $("#myModal").modal("toggle");
             });
 
     });
-    // Clear form data
+
+    // Clear form data function
     function clearInputs(){
         $("#name").val("");
         $("#photo").val("");
