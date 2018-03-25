@@ -165,6 +165,7 @@
                 <!-- matching friend name -->
                 <h3 id="matchName"></h3>
                 <!-- matching friend image -->
+                <img src="matchImg" alt="match image">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -204,7 +205,9 @@
 
                 $("#matchName").text(data.name);
                 // display the modal after match is found
-                $("#myModal").modal("toggle");
+                $("#myModal").attr("style", "display:block;");
+                $("#myModal").addClass("in");
+                
             });
 
     });
