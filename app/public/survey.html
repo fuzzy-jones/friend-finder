@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FriendFinder</title>
-    <script src="https://code.jquery.com/jquery.js"></script>    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
 </head>
 <body>
@@ -29,7 +28,7 @@
 
     <h3><strong>Question 1</strong></h3>
     <h4>Pizza is the best food on planet earth.</h4>
-    <select id="q1">
+    <select id="q1" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -40,7 +39,7 @@
 
     <h3><strong>Question 2</strong></h3>
     <h4>You would rather stay in and watch a movie, than go out to a bar.</h4>
-    <select id="q2">
+    <select id="q2" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -51,7 +50,7 @@
 
     <h3><strong>Question 3</strong></h3>
     <h4>You are more of a night person than a morning person.</h4>
-    <select id="q3">
+    <select id="q3" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -62,7 +61,7 @@
 
     <h3><strong>Question 4</strong></h3>
     <h4>You to plan everything out.</h4>
-    <select id="q4">
+    <select id="q4" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -73,7 +72,7 @@
 
     <h3><strong>Question 5</strong></h3>
     <h4>You would rather wing it.</h4>
-    <select id="q5">
+    <select id="q5" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -84,7 +83,7 @@
 
     <h3><strong>Question 6</strong></h3>
     <h4>You like spicy food.</h4>
-    <select id="q6">
+    <select id="q6" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -95,7 +94,7 @@
 
     <h3><strong>Question 7</strong></h3>
     <h4>My ideal vacation is spent at the beach.</h4>
-    <select id="q7">
+    <select id="q7" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -106,7 +105,7 @@
 
     <h3><strong>Question 8</strong></h3>
     <h4>Video games are cool.</h4>
-    <select id="q8">
+    <select id="q8" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -117,7 +116,7 @@
 
     <h3><strong>Question 9</strong></h3>
     <h4>Horror movies are scary.</h4>
-    <select id="q9">
+    <select id="q9" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -128,7 +127,7 @@
 
     <h3><strong>Question 10</strong></h3>
     <h4>Hakuna Matata...It's your problem-free philosophy</h4>
-    <select id="q10">
+    <select id="q10" class="question-input">
         <option value="" selected disabled hidden>Select an option</option>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
@@ -163,9 +162,9 @@
             </div>
             <div class="modal-body">
                 <!-- matching friend name -->
-                <h3 id="matchName"></h3>
+                <h2 id="matchName"></h2>
                 <!-- matching friend image -->
-                <img src="matchImg" alt="match image">
+                <img id="matchImage" src="" alt="">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -180,39 +179,61 @@
     // get new table info
     $("#add-btn").on("click", function(event) {
         event.preventDefault();
-        var newFriend = {
-            name: $("#name").val().trim(),
-            photo: $("#photo").val().trim(),
-            scores: [
-                $("#q1").val(),
-                $("#q2").val(),
-                $("#q3").val(),
-                $("#q4").val(),
-                $("#q5").val(),
-                $("#q6").val(),
-                $("#q7").val(),
-                $("#q8").val(),
-                $("#q9").val(),
-                $("#q10").val()
-            ]
-        };
-        clearInputs();
-        console.log("added");
+
+        // Form validation
+        function validateForm() {
+          var isValid = true;
+        $(".form-control").each(function() {
+            if ($(this).val() === "") {
+                isValid = false;
+            }
+        });
+
+        $(".question-input").each(function() {
+            if ($(this).val() === "") {
+                isValid = false;
+            }
+        });
+            return isValid;
+        }
+
+        // if all questions and from are filled the take inputs and do magic
+        if (validateForm()) {
+            var newFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: [
+                    $("#q1").val(),
+                    $("#q2").val(),
+                    $("#q3").val(),
+                    $("#q4").val(),
+                    $("#q5").val(),
+                    $("#q6").val(),
+                    $("#q7").val(),
+                    $("#q8").val(),
+                    $("#q9").val(),
+                    $("#q10").val()
+                ]
+            };
+            clearInputs();
 
         // post/add new friend info to array
         $.post("/api/friends", newFriend, function(data) {
                 // alert("Adding Friend...");
 
-                $("#matchName").text(data.name);
                 // display the modal after match is found
-                $("#myModal").attr("style", "display:block;");
-                $("#myModal").addClass("in");
-                
+                $("#myModal").modal('show');
+                $("#matchName").text(data.name);
+                // for some reason this is showing as src undefined, the data is right cause I tested as text and it returned to url, but for some reason its showing as undefined in modal when inspected 
+                $("matchImage").attr("src", data.photo);
             });
+        } else {
+            alert("please fill out all forms, and answer all questions")
+        }
 
     });
 
-    // Clear form data function
+    // Clear form data function to reset all inputs
     function clearInputs(){
         $("#name").val("");
         $("#photo").val("");

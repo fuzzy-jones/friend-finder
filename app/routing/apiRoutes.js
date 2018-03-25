@@ -24,32 +24,30 @@ module.exports = function (app) {
             // log name of friends in array for testing
             // console.log(friends[i].name);
             var totalDifference = 0;
-            // now loop through the scores of each in the array to compare to the new user scores to find difference
+            // now loop through the scores of each to find difference
             for (j = 0; j < user.scores.length; j++) {
                 // now storing the difference of each score of the new friend to that of each in the friends array
                 var difference = Math.abs(parseInt(user.scores[j]) - parseInt(friends[i].scores[j]));
-                // console logging the difference for testing
                 // adding the difference of each value and creating a sum of total difference
                 totalDifference += difference;
                 // console log for testing
                 // console.log(totalDifference); 
             }
-            
+            // if the total difference for each is less than that max difference possible, it becomes new best, as it loops through all friends
             if (totalDifference < maxDifference) {
                 maxDifference = totalDifference;
-                friendMatch = friends[i];
-                
-                
+                // the friend match = the data of the best match chosen
+                friendMatch = friends[i]; 
             }
         }
-
+        // console log the best match friend for testing
         console.log(friendMatch);
 
         // makes int a positive number
         // Math.abs();
 
         friends.push(user);
-        // need to change to friendMatch once found
+        // serve up the data of the best friend match
         res.json(friendMatch);
     });
 
