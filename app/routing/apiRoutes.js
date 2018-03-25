@@ -16,9 +16,6 @@ module.exports = function (app) {
 
         var maxDifference = 44;
         
-        var bestMatchNameArray = [];
-        var bestMatchPhotoArray = [];
-        
         // loop through the existing friends array from the friendsData.js file and any new friend pushed into that array
         for (i = 0; i < friends.length; i++) {
             // log name of friends in array for testing
