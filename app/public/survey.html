@@ -220,10 +220,10 @@
         // post/add new friend info to array
         $.post("/api/friends", newFriend, function(data) {
                 // alert("Adding Friend...");
-                console.log(data);
+                // displaying data in modal
                 $("#matchName").text(data.name);
-                // for some reason this is showing as src undefined, the data is right cause I tested as text and it returned to url, but for some reason its showing as undefined in modal when inspected 
                 $("#matchImage").attr("src", data.photo);
+                
                 // display the modal after match is found
                 $("#myModal").modal('show');
                
