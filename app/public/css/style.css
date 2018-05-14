@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
     font-family: myFirstFont;
     src: url(../images/No-Added-Sugar.otf);
-}
+} */
 
 .jumbotron {
     text-align: center;
@@ -16,30 +16,17 @@
 
 .jumbotron h2 {
     color: #394357;
-    font-family: myFirstFont;
     font-weight: bold;
-    font-size: 36px;
 }
 
 #survey-button {
     background-color: #394357;
 }
 
-h3 {
-    font-family: myFirstFont;
-    font-size: 36px;
-}
-
-h4 {
-    font-family: myFirstFont;
-    font-size: 32px;
-}
-
 .survey-text h2 {
     text-align: center;
-    font-size: 72px;
     font-weight: bold;
-    font-family: myFirstFont;
+    font-size: 48px;
 }
 
 #add-btn {
